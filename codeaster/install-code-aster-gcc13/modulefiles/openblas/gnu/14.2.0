@@ -1,0 +1,23 @@
+#%Module1.0
+##
+## OpenBLAS modulefile for GNU 14.2.0
+##
+
+proc ModulesHelp { } {
+    puts stderr "This module loads OpenBLAS with the GNU 14.2.0 compiler."
+}
+
+module-whatis "OpenBLAS with GNU 14.2.0"
+
+# Set the OpenBLAS root path
+set OPENBLAS_ROOT /tools/openblas/gnu/14.2.0
+
+# Set the library and include paths
+prepend-path LD_LIBRARY_PATH $OPENBLAS_ROOT/lib
+prepend-path CPATH $OPENBLAS_ROOT/include
+prepend-path LIBRARY_PATH $OPENBLAS_ROOT/lib
+prepend-path PATH $OPENBLAS_ROOT/bin
+prepend-path PKG_CONFIG_PATH $OPENBLAS_ROOT/lib/pkgconfig
+
+# Optional: Set any environment variables specific to OpenBLAS
+setenv OPENBLAS_HOME $OPENBLAS_ROOT

@@ -1,0 +1,34 @@
+@@ -32,6 +32,24 @@
+ # + configuration + swig, libxml2-devel
+ _extract_arch ../configuration-${_CONFIGURATION}.tar.gz
+ mv content configuration
++sed -i 's/PyArray_ISBEHAVED(elt0)/PyArray_ISBEHAVED( (const PyArrayObject*) elt0)/g' src/MEDCoupling_Swig/MEDCouplingDataArrayTypemaps.i
++sed -i 's/PyArray_ISBEHAVED_RO(elt0)/PyArray_ISBEHAVED_RO( (const PyArrayObject*) elt0)/g' src/MEDCoupling_Swig/MEDCouplingDataArrayTypemaps.i
++sed -i 's/PyArray_NDIM(elt0)/PyArray_NDIM((const PyArrayObject*) elt0)/g' src/MEDCoupling_Swig/MEDCouplingDataArrayTypemaps.i
++
++# Replace PyArray_DESCR with cast to const PyArrayObject
++sed -i 's/PyArray_DESCR(elt0)/PyArray_DESCR((const PyArrayObject*) elt0)/g' src/MEDCoupling_Swig/MEDCouplingDataArrayTypemaps.i
++
++# Replace PyArray_DIM with cast to const PyArrayObject
++sed -i 's/PyArray_DIM(elt0,/PyArray_DIM((const PyArrayObject*) elt0,/g' src/MEDCoupling_Swig/MEDCouplingDataArrayTypemaps.i
++
++# Replace PyArray_ITEMSIZE with cast to const PyArrayObject
++sed -i 's/PyArray_ITEMSIZE(elt0)/PyArray_ITEMSIZE((const PyArrayObject*) elt0)/g' src/MEDCoupling_Swig/MEDCouplingDataArrayTypemaps.i
++
++# Replace PyArray_STRIDE with cast to const PyArrayObject
++sed -i 's/PyArray_STRIDE(elt0,/PyArray_STRIDE((const PyArrayObject*) elt0,/g' src/MEDCoupling_Swig/MEDCouplingDataArrayTypemaps.i
++
++# Replace PyArray_BYTES with cast to const PyArrayObject
++sed -i 's/PyArray_BYTES(elt0)/PyArray_BYTES((const PyArrayObject*) elt0)/g' src/MEDCoupling_Swig/MEDCouplingDataArrayTypemaps.i
+ 
+ mkdir build
+ cd build
+@@ -61,6 +79,8 @@
+     -DMEDCOUPLING_PARTITIONER_PARMETIS=OFF \
+     -DMEDCOUPLING_PARTITIONER_METIS=OFF \
+     -DMEDCOUPLING_PARTITIONER_SCOTCH=OFF \
++    -DCMAKE_CXX_FLAGS="-fsigned-char -DMED_INT_IS_LONG=1 -Wno-narrowing" \
++    -DCMAKE_C_FLAGS="-fsigned-char -DMEDINT_IS_LONG=1 -Wno-narrowing" \
+     -DMEDCOUPLING_PARTITIONER_PTSCOTCH=${on_mpi} \
+     -DMPI_C_COMPILER:PATH=$(which mpicc) \
+     -DMPI_CXX_COMPILER:PATH=$(which mpicxx) \

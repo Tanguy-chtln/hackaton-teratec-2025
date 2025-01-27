@@ -1,0 +1,9 @@
+@@ -49,7 +56,7 @@
+     # should be installed in 'platlib'
+     pydone=( $(get_python_path user purelib) )
+ fi
+-
++sed -i '1s/^/#include <algorithm> /'  ../mfront/src/UserDefinedNonLinearSystemSolver.cxx
+ cmake .. \
+     -DCMAKE_BUILD_TYPE=${build_type} \
+     -DTFEL_SVN_REVISION=${MFRONT} -DTFEL_APPEND_VERSION=${MFRONT} \

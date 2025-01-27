@@ -1,0 +1,24 @@
+@@ -103,7 +104,7 @@
+ LPORD      = -L\$(LPORDDIR) -lpord
+ 
+ IMETIS     = -I${DEST}/metis-${METIS}/include
+-#LMETIS     = -L${DEST}/metis-${METIS}/lib -lmetis
++LMETIS     = -L${DEST}/metis-${METIS}/lib -lmetis -lz # -lGKlib is included in the libmetis
+ ${incparmetis}
+ ${libparmetis}
+ ISCOTCH    = -I${DEST}/scotch-${SCOTCH}/include
+@@ -145,12 +146,12 @@
+ 
+ CDEFS = -DAdd_
+ 
+-OPTF = ${common_flags} ${FCFLAGS}
++OPTF = ${common_flags} ${FCFLAGS} -fallow-argument-mismatch
+ OPTC = ${common_flags} ${CFLAGS}
+ OPTL = ${common_flags}
+ 
+ INCS = \$(${varincs})
+-LIBS = \$(${varlibs})
++LIBS = \$(${varlibs}) 
+ LIBSEQNEEDED = ${libseqneeded}
+ eof
+ 

@@ -1,0 +1,17 @@
+@@ -29,11 +29,15 @@
+ cd content
+ mkdir build
+ cd build
++arg_mismatch=
++arg_mismatch="-fallow-argument-mismatch"
+ cmake .. \
+     -DCMAKE_BUILD_TYPE=Release \
+     -DBUILD_SHARED_LIBS=ON \
+-    -DCMAKE_Fortran_FLAGS="${FCFLAGS}" \
++    -DCMAKE_Fortran_FLAGS="${FCFLAGS} ${arg_mismatch} -L/opt/amazon/openmpi5/lib64 -Wl,-rpath -Wl,/opt/amazon/openmpi5/lib64 -Wl,--enable-new-dtags" \
+     -DLAPACK_LIBRARIES="$(math_link_advisor math) $(math_link_advisor openmp)" \
++    -DCMAKE_C_FLAGS="-Wno-error=implicit-function-declaration" \
++    -DCMAKE_EXE_LINKER_FLAGS="-L/opt/amazon/openmpi5/lib64 -Wl,-rpath -Wl,/opt/amazon/openmpi5/lib64 -Wl,--enable-new-dtags -lmpi_usempif08 -lmpi_usempi_ignore_tkr -lmpi_mpifh -lmpi" \
+     -DCMAKE_INSTALL_PREFIX=${DEST}/scalapack-${SCALAPACK}
+ # -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON
+ 

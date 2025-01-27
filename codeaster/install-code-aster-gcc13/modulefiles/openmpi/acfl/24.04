@@ -1,0 +1,23 @@
+#%Module
+
+proc ModulesHelp { } {
+    puts stderr "This module sets up Open MPI 4.1.7 with ACFL 24.04"
+}
+
+module-whatis "Open MPI 4.1.7 with ACFL 24.04"
+
+# Environment variables
+set root /tools/openmpi/4.1.7/acfl/24.04
+setenv MPI_HOME $root
+setenv OMPI_VERSION 4.1.7
+setenv OMPI_CC clang
+setenv OMPI_CXX clang++
+setenv OMPI_FC flang
+
+# Paths
+prepend-path PATH $root/bin
+prepend-path LD_LIBRARY_PATH $root/lib
+prepend-path MANPATH $root/share/man
+prepend-path C_INCLUDE_PATH $root/include
+prepend-path CPLUS_INCLUDE_PATH $root/include
+prepend-path PKG_CONFIG_PATH $root/lib/pkgconfig

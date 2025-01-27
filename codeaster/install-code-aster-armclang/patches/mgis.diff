@@ -1,0 +1,11 @@
+@@ -24,6 +24,10 @@
+ if [ ${MGIS} = "2.2" ]; then
+     patch -p1 < ${prefix}/patches/mgis-2.2-regexp-pythonlibs-version.diff
+ fi
++sed -i 's/(!this->result_has_value())/(!this->result.has_value())/g' include/MGIS/ThreadedTaskResult.ixx
++sed -i 's|crend()|cend()|g' include/MGIS/StringView.ixx
++
++
+ 
+ mkdir build
+ cd build

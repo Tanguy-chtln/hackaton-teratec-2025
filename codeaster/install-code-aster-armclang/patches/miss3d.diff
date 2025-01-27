@@ -1,0 +1,10 @@
+@@ -34,7 +34,8 @@
+ 
+ F90FLAGS += \$(FCFLAGS)
+ EOF
+-
++export FCFLAGS="${FCFLAGS} " 
++find ./src -type f -name "Makefile*" -exec sed -i 's/-mcmodel=medium//g; s/-mcmodel medium//g' {} +
+ mkdir -p ${DEST}/miss3d-${MISS3D}/bin ${DEST}/miss3d-${MISS3D}/lib
+ make -j ${procs}
+ make prefix=${DEST}/miss3d-${MISS3D} install

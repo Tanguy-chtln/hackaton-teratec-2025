@@ -1,0 +1,11 @@
+@@ -40,9 +40,10 @@
+     opts+=( "--disable-mesgerr" )
+ fi
+ opts+=( "--disable-static" )
++opts+=( "--with-med_int=long" )
+ 
+ export F77=${FC}
+ alias python=python3
+ CXXFLAGS='-std=gnu++98' PYTHON=$(which python3) \
+     ./configure "${opts[@]}" --with-hdf5=${DEST}/hdf5-${HDF5} --prefix=${DEST}/med-${MED}
+ [ $? -eq 0 ] || exit 1

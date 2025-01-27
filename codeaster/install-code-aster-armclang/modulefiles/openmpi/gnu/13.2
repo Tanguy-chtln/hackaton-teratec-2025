@@ -1,0 +1,23 @@
+#%Module
+
+proc ModulesHelp { } {
+    puts stderr "This module sets up Open MPI 4.1.7 with GCC 13.2.0"
+}
+
+module-whatis "Open MPI 4.1.7 with GCC 13.2.0"
+
+# Environment variables
+set root /tools/openmpi/4.1.7/gnu/13.2.0
+setenv MPI_HOME $root
+setenv OMPI_VERSION 4.1.7
+setenv OMPI_CC gcc
+setenv OMPI_CXX g++
+setenv OMPI_FC gfortran
+
+# Paths
+prepend-path PATH $root/bin
+prepend-path LD_LIBRARY_PATH $root/lib
+prepend-path MANPATH $root/share/man
+prepend-path C_INCLUDE_PATH $root/include
+prepend-path CPLUS_INCLUDE_PATH $root/include
+prepend-path PKG_CONFIG_PATH $root/lib/pkgconfig

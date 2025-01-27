@@ -1,0 +1,27 @@
+@@ -49,7 +49,7 @@
+     export FCFLAGS="-fallow-argument-mismatch ${FCFLAGS}"
+ fi
+ 
+-# add explicit length declaration in include
++# Correction on some included macros
+ sed -i 's/INTEGER *,/INTEGER(4),/g' include/*_{struc,root}.h
+ sed -i 's/INTEGER *::/INTEGER(4) ::/g' include/*_{struc,root}.h
+ sed -i 's/INTEGER MPI/INTEGER(4) MPI/g' libseq/mpif.h
+@@ -60,6 +60,7 @@
+ sed -i 's/LOGICAL *,/LOGICAL(4),/g' include/*_{struc,root}.h libseq/mpif.h
+ sed -i 's/LOGICAL *::/LOGICAL(4) ::/g' include/*_{struc,root}.h libseq/mpif.h
+ 
++# add explicit length declaration in include
+ # create makefile - look for examples
+ # those in the Make.inc folder
+ # https://gitlab.com/petsc/petsc/-/blob/main/config/BuildSystem/config/packages/MUMPS.py
+@@ -103,7 +104,7 @@
+ LPORD      = -L\$(LPORDDIR) -lpord
+ 
+ IMETIS     = -I${DEST}/metis-${METIS}/include
+-#LMETIS     = -L${DEST}/metis-${METIS}/lib -lmetis
++LMETIS     = -L${DEST}/metis-${METIS}/lib -lmetis -lz # GKlib is included in the libmetis 
+ ${incparmetis}
+ ${libparmetis}
+ ISCOTCH    = -I${DEST}/scotch-${SCOTCH}/include
+
