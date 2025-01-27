@@ -52,8 +52,6 @@ We are moving the python binaries as they are conflicting with the local install
 Here is a brief explanation of the directories in the installation folders :
 - **archives** contains the source code we use to install cmake, ScaLAPACK and boost. For python, we are cloning its github repository
 - **compiling-env, env, utils, src, Makefile** are containing the bash scripts and environments variables used to install cmake, python, ScaLAPACK and boost 
-- **build** is the folder in which cmake, python, ScaLAPACK and boost are compiled 
-- **install** would be the directory in which the 4 packages above would be installed if the installation script did not put any prefix. However, as you will use our installation script, this folder should not be used 
 - **modulefiles** folder contain the modulefiles to load the OpenBLAS and OpenMPI libraries stored in your */tools* directory 
 - **VERSION, patches, metis-5.1.1.tar.gz** are the modifications we make to the prerequisites. In fact, the script downloads the prerequisites from source, so modifications are to be made. Therefore, in the original prerequisites, we are replacing the *VERSION* file, as the version of the metis library has changed. Indeed, we are replacing the archive of metis as the old one can not be decompressed. Finally, we are applying some patches to the *src* directory of the prerequisites. All the patches we apply are written in the *patches* directory.
 
