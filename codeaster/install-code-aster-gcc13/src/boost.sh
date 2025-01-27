@@ -6,9 +6,9 @@ source "${ROOT}/compiling-env/python.sh"
 source "${ROOT}/env/cmake.sh"
 source "${ROOT}/env/python.sh"
 
-cd archives
+cd ${ROOT}/archives
 wget https://archives.boost.io/release/1.75.0/source/boost_1_75_0.tar.gz 
-cd ..
+cd ${ROOT}
 
 tar xvf "${ROOT}/${BOOST_ARCHIVE}" -C "${ROOT}/${BOOST_BUILD_DIR}"
 [ $? -eq 0 ] || exit 1
