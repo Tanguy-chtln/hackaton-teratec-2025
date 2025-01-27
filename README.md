@@ -7,10 +7,10 @@ Team 15
 
 # Authors
 
-Tanguy Chatelain
-Abdurahman Kanit
-Louis Peyrondet
-Tristan Riehs
+- Tanguy Chatelain
+- Abdurahman Kanit
+- Louis Peyrondet
+- Tristan Riehs
 
 # Projets
 
