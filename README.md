@@ -1,6 +1,20 @@
-# Hackaton Teratec 2025
+=======
+2025 Teratec Hackathon
+===
 
-Ce dépôt contient le travaille réalisé par la team 15 lors du hackaton Teratec de 2025. Vous trouverez des informations respectives aux deux projets dans :
+Team 15
+---
 
+# Authors
+
+Tanguy Chatelain
+Abdurahman Kanit
+Louis Peyrondet
+Tristan Riehs
+
+# Projets
+
+Each project has its own subdirectory and README. See :
 - [Code Aster](./codeaster/README.md)
 - [Viridien](./viridien/README.md)
+
